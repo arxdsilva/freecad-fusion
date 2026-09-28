@@ -1,8 +1,15 @@
-# freecad-fusion
+# freecad-fusion: Fusion 360 navigation and shortcuts for FreeCAD
 
-Make [FreeCAD](https://www.freecad.org) feel familiar if you come from **Autodesk Fusion**.
-Install it, restart FreeCAD, and the mouse, the view cube and the single-key shortcuts
-behave the way your hands already expect. Everything is reversible from the Tools menu.
+**Switching from Autodesk Fusion (Fusion 360) to FreeCAD?** This free, open-source FreeCAD
+add-on makes the mouse, the view cube and the keyboard shortcuts work the way Fusion 360
+users expect, so you can move to FreeCAD with minimal relearning:
+
+- **Drag the NaviCube to orbit**, like the Fusion 360 ViewCube.
+- **Fusion 360 mouse controls**: Shift + middle mouse to orbit, middle mouse to pan, zoom at cursor.
+- **Fusion 360 keyboard shortcuts** in the Sketcher and Part Design: L line, R rectangle,
+  C circle, D dimension, E extrude, H hole, F fillet and more.
+- **One-line install** on macOS, Linux and Windows, or through the FreeCAD Addon Manager.
+- **Fully reversible** from the Tools menu.
 
 Tested on FreeCAD 1.1 (macOS). Requires FreeCAD 1.0 or newer.
 
@@ -110,6 +117,29 @@ Addon Manager, or run `./install.sh --uninstall` / `.\install.ps1 -Uninstall`.
   toolbox, so those keys are left alone.
 - A key can only run one command, so `M` is global Transform rather than Fusion's
   sketch-only move.
+
+## FAQ
+
+**How do I make FreeCAD navigate like Fusion 360?**
+Install this add-on and restart FreeCAD. It switches FreeCAD to the mouse mapping Fusion
+uses (Shift + middle-drag orbit, middle-drag pan, zoom at cursor) and lets you drag the
+NaviCube like the Fusion ViewCube.
+
+**Can I use Fusion 360 keyboard shortcuts in FreeCAD?**
+Yes. The add-on maps Fusion's single-key shortcuts to the matching FreeCAD Sketcher and
+Part Design commands (see the table above), and you can undo it at any time.
+
+**What is the FreeCAD equivalent of Fusion 360's Extrude, Hole and Fillet?**
+Part Design Pad (`E`), Hole (`H`) and Fillet (`F`). Fusion's sketch tools map to Sketcher
+Line (`L`), Rectangle (`R`), Circle (`C`) and Dimension (`D`).
+
+**Can I rotate the view by dragging the FreeCAD NaviCube?**
+Not in stock FreeCAD, where dragging moves the cube widget itself. With this add-on,
+click and drag the cube to orbit, the way the Fusion 360 ViewCube works.
+
+**Is this an official Autodesk or FreeCAD project?**
+No. It is an independent community add-on and is not affiliated with or endorsed by
+Autodesk or the FreeCAD project. Autodesk and Fusion are trademarks of Autodesk, Inc.
 
 ## Roadmap ideas
 
