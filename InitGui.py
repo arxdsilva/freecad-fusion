@@ -1,5 +1,6 @@
 # freecad-fusion: make FreeCAD feel familiar to Autodesk Fusion users.
-# Loaded automatically by FreeCAD from its Mod folder.
+# Loaded automatically by FreeCAD from its Mod folder (package.xml declares it
+# as a <workbench> entry so that FreeCAD runs this file at every startup).
 
 
 def _freecad_fusion_start():
@@ -11,15 +12,19 @@ def _freecad_fusion_start():
         commands.register()
         navicube_drag.start()
         g = params.group()
-        if not g.GetBool("FirstRunDone", False):
+        first_run = not g.GetBool("FirstRunDone", False)
+        # Fusion mode stays on across restarts until the user picks
+        # Tools > Restore my previous FreeCAD settings (which sets Enabled=False).
+        if first_run or g.GetBool("Enabled", True):
             notes = presets.apply_preset()
             g.SetBool("FirstRunDone", True)
-            App.Console.PrintMessage(
-                "[freecad-fusion] Fusion navigation and shortcuts enabled. "
-                "Undo any time: Tools > Restore my previous FreeCAD settings\n"
-            )
+            if first_run:
+                App.Console.PrintMessage(
+                    "[freecad-fusion] Fusion navigation and shortcuts enabled. "
+                    "Undo any time: Tools > Restore my previous FreeCAD settings\n"
+                )
             for n in notes:
-                App.Console.PrintMessage("  - %s\n" % n)
+                App.Console.PrintMessage("[freecad-fusion] %s\n" % n)
     except Exception as exc:  # never break FreeCAD startup
         App.Console.PrintError("[freecad-fusion] failed to start: %s\n" % exc)
 

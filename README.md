@@ -83,7 +83,8 @@ irm https://raw.githubusercontent.com/arxdsilva/freecad-fusion/main/install.ps1 
 `Mod` folder they find, so `git pull` updates the add-on.
 
 On the first start after installing, the Fusion navigation and shortcuts are applied
-automatically.
+automatically, and they are re-applied on every start after that, so Fusion mode stays on
+until you choose **Tools > Restore my previous FreeCAD settings**.
 
 ## Using and undoing it
 
@@ -91,7 +92,8 @@ Three entries are added to the **Tools** menu in every workbench:
 
 - **Apply Fusion navigation & shortcuts**: apply (or re-apply) the preset;
 - **Restore my previous FreeCAD settings**: put back your navigation style and every
-  shortcut the preset changed (your own custom shortcuts, or FreeCAD's defaults);
+  shortcut the preset changed (your own custom shortcuts, or FreeCAD's defaults), and
+  keep Fusion mode off on later starts until you apply it again;
 - **Drag NaviCube to orbit**: turn the drag-to-orbit behaviour on or off.
 
 ### Tuning
@@ -100,6 +102,7 @@ Tools > Edit Parameters > `BaseApp/Preferences/Mod/FreecadFusion`:
 
 | Parameter | Type | Default | Meaning |
 |---|---|---|---|
+| `Enabled` | Boolean | true | Re-apply the Fusion preset on every start |
 | `NaviCubeDrag` | Boolean | true | Drag-to-orbit on the NaviCube |
 | `NaviCubeDragDegPerPx` | Float | 0.5 | Orbit speed, degrees per pixel dragged |
 | `NaviCubeDragInvert` | Boolean | false | Reverse the drag direction |

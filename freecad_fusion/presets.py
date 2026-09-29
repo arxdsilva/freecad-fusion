@@ -135,6 +135,7 @@ def apply_preset():
             notes.append("%s now runs %s (was %s)" % (key, cmd_name, other))
         cmd.setShortcut(key)
     params.group().SetBool("NaviCubeDrag", True)
+    params.group().SetBool("Enabled", True)
     return notes
 
 
@@ -142,6 +143,7 @@ def restore():
     """Put back the values that were active before the preset was first applied."""
     b = params.backup_group()
     if not b.GetBool("HasBackup", False):
+        params.group().SetBool("Enabled", False)
         return ["nothing to restore (preset was never applied)"]
     view = App.ParamGet(VIEW)
     for key, (kind, _value) in VIEW_SETTINGS.items():
@@ -162,6 +164,7 @@ def restore():
         if name.startswith("displaced.saved."):
             _restore_shortcut(b, "displaced", name[len("displaced.saved."):])
     params.group().SetBool("NaviCubeDrag", False)
+    params.group().SetBool("Enabled", False)  # stay off on the next start
     App.ParamGet(params.GROUP).RemGroup("Backup")
     return ["restored previous navigation style and shortcuts"]
 
